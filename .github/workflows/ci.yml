@@ -1,4 +1,4 @@
-name: Node.js CI (Yarn)
+name: Node.js CI (npm)
 
 on:
   push:
@@ -20,13 +20,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Lint code
-        run: yarn lint
+        run: npm run lint
 
       - name: Run tests
-        run: yarn test
+        run: npm test
